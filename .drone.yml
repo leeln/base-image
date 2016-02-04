@@ -1,5 +1,5 @@
 build:
-  image: docker.repo.waimai.sankuai.info/docker:dind
+  image: docker.repo.waimai.sankuai.info/plugins/drone-docker
   pull: true
   privileged: true
   auth_config:
@@ -8,8 +8,6 @@ build:
   environment:
      - DOCKER_USERNAME=$$DOCKER_USERNAME
      - DOCKER_PASSWORD=$$DOCKER_PASSWORD
-  # volumes:
-  #     - /var/run/docker.sock:/var/run/docker.sock
   commands:
     - docker ps
     - docker images
@@ -17,8 +15,3 @@ build:
     - docker build -t docker.repo.waimai.sankuai.info/leeln/java:8-jdk java/8/jdk
     - docker build -t docker.repo.waimai.sankuai.info/leeln/java:8-jre java/8/jre
     - docker build -t docker.repo.waimai.sankuai.info/leeln/thrift:0.8.0 thrift/0.8.0
-
-compose:
-  dind:
-    image: docker:dind
-    privileged: true
