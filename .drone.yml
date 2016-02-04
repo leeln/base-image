@@ -1,5 +1,7 @@
+
 publish:
-  - docker:
+  docker:
+    ubuntu:
       registry: docker.repo.waimai.sankuai.info
       username: $$DOCKER_USERNAME
       password: $$DOCKER_PASSWORD
@@ -9,7 +11,7 @@ publish:
       insecure: true
       tag: 14.04
 
-  - docker:
+    jdk8:
       registry: docker.repo.waimai.sankuai.info
       username: $$DOCKER_USERNAME
       password: $$DOCKER_PASSWORD
@@ -22,7 +24,7 @@ publish:
         - "8-jdk"
         - "8"
 
-  - docker:
+    jre8:
       registry: docker.repo.waimai.sankuai.info
       username: $$DOCKER_USERNAME
       password: $$DOCKER_PASSWORD
@@ -32,7 +34,7 @@ publish:
       insecure: true
       tag: 8-jre
 
-  - docker:
+    thrift:
       registry: docker.repo.waimai.sankuai.info
       username: $$DOCKER_USERNAME
       password: $$DOCKER_PASSWORD
