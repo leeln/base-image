@@ -1,5 +1,5 @@
 build:
-  image: plugins/drone-docker
+  image: docker.repo.waimai.sankuai.info/docker
   # pull: true
   # privileged: true
   # auth_config:
