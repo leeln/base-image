@@ -1,45 +1,16 @@
+build:
+  image: docker.repo.waimai.sankuai.info/docker:dind
+  pull: true
+  privileged: true
+  auth_config:
+    username: $$DOCKER_USERNAME
+    password: $$DOCKER_PASSWORD
+  environment:
+     - DOCKER_USERNAME=$$DOCKER_USERNAME
+     - DOCKER_PASSWORD=$$DOCKER_PASSWORD
+  commands:
+    - docker build -t docker.repo.waimai.sankuai.info/leeln/ubuntu:14.04 ubuntu/14.04
+    - docker build -t docker.repo.waimai.sankuai.info/leeln/java:8-jdk java/8/jdk
+    - docker build -t docker.repo.waimai.sankuai.info/leeln/java:8-jre java/8/jre
+    - docker build -t docker.repo.waimai.sankuai.info/leeln/thrift:0.8.0 thrift/0.8.0
 
-publish:
-  docker:
-    ubuntu:
-      registry: docker.repo.waimai.sankuai.info
-      username: $$DOCKER_USERNAME
-      password: $$DOCKER_PASSWORD
-      email: liuzhenyuan@meituan.com
-      repo: docker.repo.waimai.sankuai.info/leeln/ubuntu
-      file: ubuntu/14.04/Dockerfile
-      insecure: true
-      tag: 14.04
-
-    jdk8:
-      registry: docker.repo.waimai.sankuai.info
-      username: $$DOCKER_USERNAME
-      password: $$DOCKER_PASSWORD
-      email: liuzhenyuan@meituan.com
-      repo: docker.repo.waimai.sankuai.info/leeln/java
-      file: java/8/jdk/Dockerfile
-      insecure: true
-      tag: 
-        - latest
-        - "8-jdk"
-        - "8"
-
-    jre8:
-      registry: docker.repo.waimai.sankuai.info
-      username: $$DOCKER_USERNAME
-      password: $$DOCKER_PASSWORD
-      email: liuzhenyuan@meituan.com
-      repo: docker.repo.waimai.sankuai.info/leeln/java
-      file: java/8/jre/Dockerfile
-      insecure: true
-      tag: 8-jre
-
-    thrift:
-      registry: docker.repo.waimai.sankuai.info
-      username: $$DOCKER_USERNAME
-      password: $$DOCKER_PASSWORD
-      email: liuzhenyuan@meituan.com
-      repo: docker.repo.waimai.sankuai.info/leeln/thrift
-      file: thrift/0.8.0/Dockerfile
-      insecure: true
-      tag: 0.8.0
