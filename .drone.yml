@@ -1,0 +1,46 @@
+publish:
+  docker:
+    registry: docker.repo.waimai.sankuai.info
+    username: $$DOCKER_USERNAME
+    password: $$DOCKER_PASSWORD
+    email: liuzhenyuan@meituan.com
+    repo: docker.repo.waimai.sankuai.info/leeln/ubuntu
+    file: ubuntu/14.04/Dockerfile
+    insecure: true
+    tag: 14.04
+
+publish:
+  docker:
+    registry: docker.repo.waimai.sankuai.info
+    username: $$DOCKER_USERNAME
+    password: $$DOCKER_PASSWORD
+    email: liuzhenyuan@meituan.com
+    repo: docker.repo.waimai.sankuai.info/leeln/java
+    file: java/8/jdk/Dockerfile
+    insecure: true
+    tag: 
+      - latest
+      - "8-jdk"
+      - "8"
+
+publish:
+  docker:
+    registry: docker.repo.waimai.sankuai.info
+    username: $$DOCKER_USERNAME
+    password: $$DOCKER_PASSWORD
+    email: liuzhenyuan@meituan.com
+    repo: docker.repo.waimai.sankuai.info/leeln/java
+    file: java/8/jre/Dockerfile
+    insecure: true
+    tag: 8-jre
+
+publish:
+  docker:
+    registry: docker.repo.waimai.sankuai.info
+    username: $$DOCKER_USERNAME
+    password: $$DOCKER_PASSWORD
+    email: liuzhenyuan@meituan.com
+    repo: docker.repo.waimai.sankuai.info/leeln/thrift
+    file: thrift/0.8.0/Dockerfile
+    insecure: true
+    tag: 0.8.0
