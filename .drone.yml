@@ -10,6 +10,7 @@ build:
      - DOCKER_USERNAME=$$DOCKER_USERNAME
      - DOCKER_PASSWORD=$$DOCKER_PASSWORD
   commands:
+    - /usr/bin/docker -d --insecure-registry docker.repo.waimai.sankuai.info
     - docker ps
     - docker images
     - docker build -t docker.repo.waimai.sankuai.info/leeln/ubuntu:14.04 ubuntu/14.04
