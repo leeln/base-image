@@ -9,7 +9,6 @@ publish:
     insecure: true
     tag: 14.04
 
-publish:
   docker:
     registry: docker.repo.waimai.sankuai.info
     username: $$DOCKER_USERNAME
@@ -23,7 +22,6 @@ publish:
       - "8-jdk"
       - "8"
 
-publish:
   docker:
     registry: docker.repo.waimai.sankuai.info
     username: $$DOCKER_USERNAME
@@ -34,7 +32,6 @@ publish:
     insecure: true
     tag: 8-jre
 
-publish:
   docker:
     registry: docker.repo.waimai.sankuai.info
     username: $$DOCKER_USERNAME
