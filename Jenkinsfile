@@ -1,7 +1,7 @@
 node {
   stage 'package'
 
-  git 'https://github.com/leeln/base.git'
+  checkout scm
   
   docker.build('leeln/base:alpine', '-f base/alpine/Dockerfile .').push()
 }

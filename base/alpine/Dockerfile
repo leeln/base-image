@@ -7,6 +7,7 @@ FROM alpine:3.4
 MAINTAINER Javy Liu <javy@lelen.com>
 
 ENV LANG C.UTF-8
+ENV TZ Asia/Shanghai
 
 RUN apk upgrade --update && \
     apk add bash
