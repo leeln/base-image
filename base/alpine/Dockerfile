@@ -6,8 +6,12 @@
 FROM alpine:3.4
 MAINTAINER Javy Liu <javy@lelen.com>
 
-ENV LANG C.UTF-8
-ENV TZ Asia/Shanghai
+ENV LANG=C.UTF-8 \
+	TZ=Asia/Shanghai \
+	GLIBC_VERSION=2.23-r3
 
 RUN apk upgrade --update && \
-    apk add bash curl
+    apk add bash curl ca-certificates wget libstdc++ && \
+	for pkg in glibc-${GLIBC_VERSION} glibc-bin-${GLIBC_VERSION} glibc-i18n-${GLIBC_VERSION}; do curl -sSL https://github.com/andyshinn/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/${pkg}.apk -o /tmp/${pkg}.apk; done && \
+    apk add --allow-untrusted /tmp/*.apk && \
+    rm -rf /tmp/* /var/tmp/* /var/cache/*
