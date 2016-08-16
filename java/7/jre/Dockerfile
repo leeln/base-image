@@ -3,9 +3,8 @@ FROM leeln/base:alpine
 # Install Oracle JRE 7u80
 RUN cd /tmp && \
     curl -L -O -H "Cookie: oraclelicense=accept-securebackup-cookie" -k "http://download.oracle.com/otn-pub/java/jdk/7u80-b15/jre-7u80-linux-x64.tar.gz" && \
-    groupadd java -g 4205 && \
-	useradd -u 4205 --home-dir /srv/java --create-home --system --no-user-group java && \
-	usermod -g java java && \
+    adduser -u 4205 -D java && \
+	mkdir /srv/java && \
 	ln -s /srv/java /var/lib/java && \
 	chown -R java:java /var/lib/java && \
     tar xf jre-7u80-linux-x64.tar.gz -C /srv/java && \
