@@ -1,7 +1,8 @@
 node {
   stage 'package'
-
-  checkout scm
-  
-  docker.build('leeln/base:alpine', '-f base/alpine/Dockerfile .').push()
+ 
+  docker.withRegistry('https://index.docker.io/v1/', 'ZXhjYWxpYnVyOmx6eTQzNjE4MTQ=') {
+  	checkout scm
+  	docker.build('leeln/base:alpine', '-f base/alpine/Dockerfile .').push()
+  }
 }
