@@ -1,8 +1,9 @@
 FROM leeln/base:alpine
 
-# Install Oracle JDK 7u80
+# Install Oracle JRE 7u80
 RUN cd /tmp && \
     curl -L -O -H "Cookie: oraclelicense=accept-securebackup-cookie" -k "http://download.oracle.com/otn-pub/java/jdk/7u80-b15/jre-7u80-linux-x64.tar.gz" && \
+    mkdir /srv/java && \
     tar xf jre-7u80-linux-x64.tar.gz -C /srv/java && \
     rm -f jre-7u80-linux-x64.tar.gz && \
     ln -s /srv/java/jre* /srv/java/jre && \

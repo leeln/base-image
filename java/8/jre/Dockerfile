@@ -1,8 +1,9 @@
 FROM leeln/base:alpine
 
-# Install Oracle JDK 8u74
+# Install Oracle JRE 8u74
 RUN cd /tmp && \
     curl -L -O -H "Cookie: oraclelicense=accept-securebackup-cookie" -k "http://download.oracle.com/otn-pub/java/jdk/8u74-b02/jre-8u74-linux-x64.tar.gz" && \
+    mkdir /srv/java && \
     tar xf jre-8u74-linux-x64.tar.gz -C /srv/java && \
     rm -f jre-8u74-linux-x64.tar.gz && \
     ln -s /srv/java/jre* /srv/java/jre && \
