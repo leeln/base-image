@@ -10,4 +10,4 @@ ENV LANG C.UTF-8
 ENV TZ Asia/Shanghai
 
 RUN apk upgrade --update && \
-    apk add bash
+    apk add bash curl

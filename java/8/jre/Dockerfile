@@ -1,22 +1,17 @@
-FROM docker.repo.waimai.sankuai.info/leeln/ubuntu:14.04
+FROM leeln/base:alpine
 
-ENV LANG C.UTF-8
-
-# Install Oracle Jre
-RUN \
-	apt-get update && \
-	apt-get install -y curl && \
-	mkdir -p /usr/lib/jvm && \
-	cd /usr/lib/jvm && \
-    curl -L -O -k "http://repo.waimai.sankuai.info/artifactory/libs-release-local/server-jre-8u71-linux-x64.gz" && \
-    tar xvf server-jre-8u71-linux-x64.gz -C /usr/lib/jvm && \
-    rm -f server-jre-8u71-linux-x64.gz && \
-    ln -s /usr/lib/jvm/jdk1.* /usr/lib/jvm/jdk && \
-    apt-get clean && \
-	rm -rf /var/lib/apt/lists/* /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/*
+# Install Oracle JDK 8u74
+RUN cd /tmp && \
+    curl -L -O -H "Cookie: oraclelicense=accept-securebackup-cookie" -k "http://download.oracle.com/otn-pub/java/jdk/8u74-b02/jre-8u74-linux-x64.tar.gz" && \
+    tar xf jre-8u74-linux-x64.tar.gz -C /srv/java && \
+    rm -f jre-8u74-linux-x64.tar.gz && \
+    ln -s /srv/java/jre* /srv/java/jre && \
+    ln -s /srv/java/jre /srv/java/jvm && \
+    chown -R java:java /srv/java && \
+    rm -rf /tmp/* /var/tmp/* /var/cache/*
 
 # Define commonly used JAVA_HOME variable
-ENV JAVA_HOME /usr/lib/jvm/jdk/jre
+ENV JAVA_HOME /srv/java/jre
 
-# Add java on PATH variable
-ENV PATH ${PATH}:${JAVA_HOME}/bin
+# Add /srv/java and jdk on PATH variable
+ENV PATH ${PATH}:${JAVA_HOME}/bin:/srv/java
