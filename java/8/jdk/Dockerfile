@@ -1,4 +1,4 @@
-FROM leeln/base:alpine
+FROM leeln/alpine:3.4
 
 # Install Oracle JDK 8u74
 RUN cd /tmp && \
