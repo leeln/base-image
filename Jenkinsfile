@@ -1,7 +1,7 @@
 node {
   stage 'package'
  
-  docker.withRegistry('https://index.docker.io/v1/','docker-registry-login') {
+  docker.withRegistry('https://docker.repo.leeln.com','leeln-admin') {
   	checkout scm
   	docker.build('leeln/base:alpine', 'base/alpine').push()
 
